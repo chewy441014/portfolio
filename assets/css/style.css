@@ -135,6 +135,7 @@ article h1 {
     top: 200px;
     background-color: var(--color2);
     width: 40%;
+    filter: blur(0);
 }
 
 .cards figure p:hover {
