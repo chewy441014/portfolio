@@ -1,0 +1,21 @@
+---
+import type { ServiceId } from '../data/services';
+import { services } from '../data/services';
+import ServiceIcon from './ServiceIcon.astro';
+import Arrow from './Arrow.astro';
+import Star from './Star.astro';
+interface Props { service: ServiceId; heading: string; accent: string; description: string; action: string; note: string; }
+const { service, heading, accent, description, action, note } = Astro.props;
+const info = services.find((item) => item.id === service)!;
+---
+<section class:list={['service-hero', `theme-${info.color}`]} aria-labelledby="page-heading">
+  <div class="container service-hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="section-number">{info.number}</span> {info.title}</p>
+      <h1 id="page-heading">{heading}<br /><em>{accent}</em></h1>
+      <p class="hero-description">{description}</p>
+      <a class="button" href="#inquire">{action}<Arrow /></a>
+    </div>
+    <div class="service-art" aria-hidden="true"><span class="art-cross"><Star /></span><div class="art-disc"><ServiceIcon kind={service} /></div><span class="art-note">{note}</span><span class="art-line"></span></div>
+  </div>
+</section>
