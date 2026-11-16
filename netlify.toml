@@ -1,0 +1,5 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# The Node version is read from .nvmrc. All pages are generated as static HTML.
