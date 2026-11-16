@@ -1,0 +1,70 @@
+---
+import type { ServiceId } from '../data/services';
+import Arrow from './Arrow.astro';
+interface Props { service: ServiceId; heading: string; description: string; detailLabel: string; detailPlaceholder: string; messagePlaceholder: string; }
+const { service, heading, description, detailLabel, detailPlaceholder, messagePlaceholder } = Astro.props;
+const formName = `${service}-inquiry`;
+---
+<section id="inquire" class="inquiry-section" aria-labelledby="inquiry-heading">
+  <div class="container inquiry-grid">
+    <div class="inquiry-copy"><p class="eyebrow">Let’s start a conversation</p><h2 id="inquiry-heading">{heading}</h2><p>{description}</p><p class="inquiry-footnote">An inquiry is a starting point. We’ll discuss the details and availability together.</p></div>
+    <form class="inquiry-form" name={formName} method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" data-inquiry-form data-local-preview={import.meta.env.DEV ? 'true' : 'false'} aria-labelledby="inquiry-heading">
+      <input type="hidden" name="form-name" value={formName} />
+      <input type="hidden" name="service" value={service} />
+      <div class="honeypot" aria-hidden="true"><label>Leave this field empty<input name="bot-field" tabindex="-1" autocomplete="off" /></label></div>
+      <div class="form-row">
+        <div class="field"><label for={`${service}-name`}>Your name <span class="required-label">(required)</span></label><input id={`${service}-name`} name="name" type="text" autocomplete="name" required maxlength="120" /></div>
+        <div class="field"><label for={`${service}-email`}>Email address <span class="required-label">(required)</span></label><input id={`${service}-email`} name="email" type="email" autocomplete="email" required maxlength="254" /></div>
+      </div>
+      <div class="field"><label for={`${service}-details`}>{detailLabel} <span class="optional-label">(optional)</span></label><input id={`${service}-details`} name="details" type="text" placeholder={detailPlaceholder} maxlength="240" /></div>
+      <div class="field"><label for={`${service}-message`}>What do you have in mind? <span class="required-label">(required)</span></label><textarea id={`${service}-message`} name="message" rows="5" placeholder={messagePlaceholder} required maxlength="5000"></textarea></div>
+      <p class="form-privacy">Your details will be used to respond to this inquiry.</p>
+      <button class="button" type="submit"><span data-submit-label>Send inquiry</span><Arrow /></button>
+      <p class="form-status" data-form-status role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></p>
+    </form>
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-inquiry-form]').forEach((form) => {
+    const status = form.querySelector<HTMLParagraphElement>('[data-form-status]');
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const label = form.querySelector<HTMLSpanElement>('[data-submit-label]');
+    if (!status || !button || !label) return;
+    const announce = (message: string, state: 'success' | 'error' | 'preview') => {
+      status.textContent = message;
+      status.dataset.state = state;
+      status.hidden = false;
+      status.focus();
+    };
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity() || button.disabled) return;
+      const localHost = ['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname);
+      if (form.dataset.localPreview === 'true' || localHost) {
+        announce('This is a local preview. Your inquiry has not been sent.', 'preview');
+        return;
+      }
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 15000);
+      button.disabled = true;
+      label.textContent = 'Sending…';
+      form.setAttribute('aria-busy', 'true');
+      status.hidden = true;
+      try {
+        const values = new URLSearchParams();
+        new FormData(form).forEach((value, key) => { if (typeof value === 'string') values.append(key, value); });
+        const response = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: values.toString(), signal: controller.signal });
+        if (!response.ok) throw new Error('Submission was not accepted.');
+        form.reset();
+        announce('Thank you. Your inquiry has been sent to Preston.', 'success');
+      } catch {
+        announce('Your inquiry could not be confirmed. Please try again in a moment. Your message is still here.', 'error');
+      } finally {
+        window.clearTimeout(timeout);
+        button.disabled = false;
+        label.textContent = 'Send inquiry';
+        form.removeAttribute('aria-busy');
+      }
+    });
+  });
+</script>
