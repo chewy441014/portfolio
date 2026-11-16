@@ -3,9 +3,56 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
 import ServiceHero from '../../components/ServiceHero.astro';
 import InquiryForm from '../../components/InquiryForm.astro';
 import Arrow from '../../components/Arrow.astro';
+
+const projects = [
+  {
+    id: 'park-picker',
+    name: 'Park Picker',
+    tagline: 'Find your next outdoor adventure',
+    category: 'Web application',
+    color: 'pink',
+    description: 'A collaborative web application I helped build to find national parks by location and activities such as hiking, camping, and swimming. It brings park information, weather forecasts, and driving routes together, with user accounts for saving trips.',
+    technologies: ['JavaScript', 'React', 'Node.js', 'GraphQL', 'MongoDB'],
+    href: 'https://github.com/chewy441014/park-picker',
+  },
+  {
+    id: 'quest-giver',
+    name: 'Quest Giver',
+    tagline: 'Everyday tracking in one place',
+    category: 'Android application',
+    color: 'green',
+    description: 'An Android application that brings tasks, habits, and nutrition tracking together. Logging tools and history views help users review their activity over time, while a local database keeps their records on the device. The project combines interface design, persistent data, and the logic behind everyday interactions.',
+    technologies: ['Kotlin', 'Jetpack Compose', 'Room'],
+    href: 'https://github.com/chewy441014/quest-giver',
+  },
+  {
+    id: 'rotodrawpy',
+    name: 'RotoDrawPy',
+    tagline: 'From images to a 3D-printable drawing tool',
+    category: 'Python desktop project',
+    color: 'orange',
+    description: 'A Python project focused on image processing and the development of a functional, 3D-printable RotoDraw. The current desktop application handles image import, preview, and normalization. The next stage adds image processing, building toward the geometry and printable components needed to turn a digital image into a working drawing tool.',
+    technologies: ['Python', 'Tkinter', 'Pillow'],
+    href: 'https://github.com/chewy441014/RotoDrawPy',
+  },
+] as const;
 ---
 <SiteLayout title="Web Development | Preston Hill" description="Thoughtful websites for people, ideas, and small businesses. Talk with Preston Hill about a new website, a refresh, or a focused improvement.">
   <ServiceHero service="web-development" heading="Your next idea," accent="ready for the web." description="A website should make what you do easy to understand. Let’s build a clear, useful home for your services, your work, or your next project." action="Talk about a project" note="Built with purpose." />
+
+  <section class="section-space builder-section" aria-labelledby="builder-heading">
+    <div class="container builder-introduction">
+      <div>
+        <p class="eyebrow">How I work</p>
+        <h2 id="builder-heading">A builder’s approach</h2>
+      </div>
+      <div class="builder-copy">
+        <p>I start with the problem: what needs to work, who it’s for, and what would make it useful. I choose languages and platforms to fit the project, and learn what’s needed as the work develops.</p>
+        <p>My projects span web applications, Android apps, and Python desktop tools. That variety reflects how I like to work—asking questions, experimenting, and building toward a practical result.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section-space" aria-labelledby="web-approach"><div class="container">
     <div class="section-intro"><div><p class="eyebrow">From idea to website</p><h2 id="web-approach">A clear message.<br />A useful experience.</h2></div><p>Start with the people visiting your site, what they need to know, and what you want to help them do.</p></div>
     <ol class="process-grid">
@@ -13,7 +60,72 @@ import Arrow from '../../components/Arrow.astro';
       <li><span class="step-number">02</span><h3>Shape the experience.</h3><p>Organize the pages, navigation, and visual direction around that purpose.</p></li>
       <li><span class="step-number">03</span><h3>Build and refine.</h3><p>Turn the plan into working pages, review them across screen sizes, and refine the details.</p></li>
     </ol>
-    <div class="project-feature"><div><p class="eyebrow">A project you can explore</p><h3>This very website.</h3><p>Four pages, one shared design, and a simple way to start a conversation. Built with Astro, TypeScript, and responsive CSS.</p><a class="text-link" href="/">Explore the homepage<Arrow /></a></div><div class="project-window" aria-hidden="true"><div class="browser-bar"><i></i><i></i><i></i></div><div class="mini-page"><span>Preston Hill.</span><div class="mini-rule"></div><div class="mini-cards"><i></i><i></i><i></i></div></div></div></div>
   </div></section>
+
+  <section id="selected-projects" class="section-space portfolio-section" aria-labelledby="projects-heading">
+    <div class="container">
+      <p class="eyebrow">Web. Mobile. Desktop.</p>
+      <h2 id="projects-heading">Selected projects</h2>
+      <div class="portfolio-grid">
+        {projects.map((project) => (
+          <article class:list={['portfolio-project', `card-${project.color}`]} aria-labelledby={`${project.id}-heading`}>
+            <div class="project-topline">
+              <p class="project-category">{project.category}</p>
+              <svg class="project-symbol" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                {project.id === 'park-picker' && <path d="m8 14 14-5 18 6 16-6v41l-16 5-18-6-14 6V14ZM22 9v40M40 15v40M29 26l5-9 5 9h-10ZM32 26v8" />}
+                {project.id === 'quest-giver' && <><rect x="14" y="4" width="36" height="56" rx="5" /><path d="M26 11h12M27 53h10M23 30l6 6 13-15M23 43h18" /></>}
+                {project.id === 'rotodrawpy' && <><rect x="8" y="10" width="48" height="44" rx="5" /><circle cx="24" cy="25" r="5" /><path d="m8 45 15-12 9 9 10-16 14 20" /></>}
+              </svg>
+            </div>
+            <h3 id={`${project.id}-heading`}>{project.name}</h3>
+            <p class="project-tagline">{project.tagline}</p>
+            <p class="project-description">{project.description}</p>
+            <ul class="project-technologies" aria-label={`${project.name} technologies`}>
+              {project.technologies.map((technology) => <li>{technology}</li>)}
+            </ul>
+            <a class="project-link" href={project.href}>Explore {project.name} on GitHub<Arrow /></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <InquiryForm service="web-development" heading="What would you like to build?" description="Share your idea, an existing website, or the problem you’d like to solve. We can discuss scope, timing, and the right next step." detailLabel="Project or existing website" detailPlaceholder="A new site, a refresh, or a website address" messagePlaceholder="Who is the website for? What should it help people do? Include any timing or budget you have in mind." />
 </SiteLayout>
+
+<style>
+  .builder-section { border-bottom: 1px solid var(--color-rule); }
+  .builder-introduction { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: start; gap: 5rem; }
+  .builder-copy p { max-width: 40rem; }
+  .builder-copy p:last-child { margin-bottom: 0; }
+  .portfolio-section { border-top: 1px solid var(--color-rule); }
+  .portfolio-section h2 { margin-bottom: 2.2rem; }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .portfolio-project { display: flex; flex-direction: column; min-width: 0; padding: 28px; border: 1px solid var(--color-rule); border-radius: 9px; }
+  .project-topline { display: flex; align-items: start; justify-content: space-between; gap: 1rem; margin-bottom: 1.6rem; }
+  .project-category { max-width: 130px; margin: .4rem 0 0; font-size: .68rem; font-weight: 600; letter-spacing: .1em; line-height: 1.6; text-transform: uppercase; }
+  .project-symbol { width: 60px; height: 60px; flex-shrink: 0; }
+  .portfolio-project h3 { margin-bottom: .8rem; font-family: var(--font-display); font-size: 2.2rem; letter-spacing: -.04em; }
+  .project-tagline { min-height: 3rem; margin-bottom: 1.1rem; font-size: .95rem; font-weight: 600; line-height: 1.5; }
+  .project-description { flex: 1; margin-bottom: 1.5rem; font-size: .9rem; line-height: 1.8; }
+  .project-technologies { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0; margin: 0 0 1.5rem; list-style: none; }
+  .project-technologies li { padding: .3rem .6rem; border: 1px solid currentColor; border-radius: 30px; font-size: .7rem; line-height: 1.4; }
+  .project-link { display: flex; align-items: center; justify-content: space-between; gap: .8rem; min-height: 48px; padding-top: 1rem; border-top: 1px solid currentColor; font-size: .78rem; font-weight: 600; line-height: 1.5; text-decoration: none; }
+  .project-link:hover { text-decoration: underline; }
+  .project-link svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .card-green .project-link:focus-visible { outline-color: var(--color-orange); }
+  @media (max-width: 1000px) {
+    .builder-introduction { gap: 2.5rem; }
+    .portfolio-project { padding: 22px; }
+    .portfolio-project h3 { font-size: 1.9rem; }
+  }
+  @media (max-width: 760px) {
+    .builder-introduction { grid-template-columns: 1fr; gap: .5rem; }
+    .portfolio-grid { grid-template-columns: 1fr; gap: 20px; }
+    .portfolio-project { padding: 26px; }
+    .portfolio-project h3 { font-size: 2.3rem; }
+    .project-tagline { min-height: 0; }
+    .project-description { font-size: .95rem; }
+    .project-link { font-size: .85rem; }
+  }
+</style>
