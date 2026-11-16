@@ -1,0 +1,10 @@
+---
+import { services } from '../data/services';
+---
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div><a class="footer-name" href="/">Preston Hill<span aria-hidden="true">.</span></a><p>A curious mind. A thoughtful approach.</p></div>
+    <nav aria-label="Footer navigation">{services.map(({ title, href }) => <a href={href}>{title}</a>)}</nav>
+    <p class="copyright">&copy; {new Date().getFullYear()} Preston Hill</p>
+  </div>
+</footer>
