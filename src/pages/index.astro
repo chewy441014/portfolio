@@ -1,16 +1,45 @@
 ---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import ServiceIcon from '../components/ServiceIcon.astro';
+import Arrow from '../components/Arrow.astro';
+import Star from '../components/Star.astro';
+import { services } from '../data/services';
 ---
+<SiteLayout title="Preston Hill | Tutoring, Web Development & Private Chef" description="Explore math and science tutoring, web development, and private chef services with Preston Hill. Three ways to work together, one thoughtful approach.">
+  <section class="home-hero" aria-labelledby="home-heading">
+    <div class="container home-hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="small-star"><Star /></span> Tutor. Developer. Private chef.</p>
+        <h1 id="home-heading">Hello, I’m<br /><em>Preston Hill.</em></h1>
+        <p class="hero-description">A curious mind. A hands-on approach. Helping you make sense of a tricky idea, bring a website to life, or make room for a good meal.</p>
+        <a class="button" href="#services">Find your starting point<Arrow /></a>
+      </div>
+      <div class="hero-stack" aria-hidden="true">
+        <span class="stack-star"><Star /></span>
+        <div class="stack-card stack-book"><ServiceIcon kind="tutoring" /><span>Make it click.</span><span class="stack-index">01</span></div>
+        <div class="stack-card stack-browser"><div class="browser-bar"><i></i><i></i><i></i></div><ServiceIcon kind="web-development" /><span>Bring it to life.</span><span class="stack-index">02</span></div>
+        <div class="stack-card stack-plate"><ServiceIcon kind="private-chef" /><span>Pull up a chair.</span><span class="stack-index">03</span></div>
+        <span class="stack-caption">Different skills. The same care.</span>
+      </div>
+    </div>
+  </section>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <section id="services" class="services-section section-space" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="section-intro"><div><p class="eyebrow">Three ways to work together</p><h2 id="services-heading">What brings you here?</h2></div><p>A question to work through, a project to build, or a meal to plan. Start with what you need.</p></div>
+      <div class="service-cards">
+        {services.map((service) => (
+          <a class:list={['service-card', `card-${service.color}`]} href={service.href} aria-labelledby={`service-title-${service.id}`}>
+            <div class="service-card-top"><span class="card-number">{service.number}</span><ServiceIcon kind={service.id} /></div>
+            <h3 id={`service-title-${service.id}`}>{service.title}</h3>
+            <p class="card-subtitle">{service.subtitle}</p>
+            <p>{service.description}</p>
+            <span class="card-link">Let’s explore<Arrow /></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="home-note" aria-labelledby="approach-heading"><div class="container note-inner"><span class="note-star"><Star /></span><div><p class="eyebrow">A common thread</p><h2 id="approach-heading">Good work starts<br />with understanding.</h2></div><p>That might mean finding the missing step in a math problem, understanding what a website needs to say, or talking about the food you love. Wherever we start, we’ll start with a conversation.</p></div></section>
+</SiteLayout>
