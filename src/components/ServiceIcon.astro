@@ -1,0 +1,25 @@
+---
+import type { ServiceId } from '../data/services';
+interface Props { kind: ServiceId; class?: string; }
+const { kind, class: className } = Astro.props;
+---
+<svg class={className} viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  {kind === 'tutoring' && (
+    <>
+      <path d="M19 27c15-5 28-2 41 6 13-8 26-11 41-6v63c-15-5-28-2-41 6-13-8-26-11-41-6V27Z" />
+      <path d="M60 33v63M30 43c7-1 13 1 19 4M30 54c7-1 13 1 19 4M30 65c7-1 13 1 19 4M72 74h18M75 66l11-16M76 50l10 16M78 15v-5M91 20l4-4M67 17l-3-4" />
+    </>
+  )}
+  {kind === 'web-development' && (
+    <>
+      <rect x="13" y="22" width="94" height="72" rx="5" />
+      <path d="M13 38h94M24 30h1M33 30h1M42 30h1M41 52 28 65l13 13M79 52l13 13-13 13M67 49 54 81M46 104h28M60 94v10" />
+    </>
+  )}
+  {kind === 'private-chef' && (
+    <>
+      <circle cx="61" cy="62" r="32" /><circle cx="61" cy="62" r="24" />
+      <path d="M12 30v25c0 5 9 5 9 0V30M16.5 30v75M107 30v75M107 30c-10 12-10 27 0 33M49 69c10-1 20-9 24-18-12-1-24 5-24 18ZM49 69l-5 7M56 63l9-5" />
+    </>
+  )}
+</svg>
