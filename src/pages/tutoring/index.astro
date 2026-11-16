@@ -1,0 +1,18 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import ServiceHero from '../../components/ServiceHero.astro';
+import InquiryForm from '../../components/InquiryForm.astro';
+---
+<SiteLayout title="Math & Science Tutoring | Preston Hill" description="Math and science tutoring with Preston Hill. Bring your questions, explore the reasoning, and work through concepts one step at a time.">
+  <ServiceHero service="tutoring" heading="A little clarity" accent="goes a long way." description="Math and science can feel like a lot of moving pieces. Let’s slow things down, ask questions, and work through the ideas together." action="Ask about tutoring" note="One concept at a time." />
+  <section class="section-space" aria-labelledby="tutoring-approach"><div class="container">
+    <div class="section-intro"><div><p class="eyebrow">The approach</p><h2 id="tutoring-approach">Understand the why.<br />Then work through the how.</h2></div><p>Bring the subject you’re studying and the part that feels unclear. We’ll use that as our starting point.</p></div>
+    <ol class="process-grid">
+      <li><span class="step-number">01</span><h3>Start with your question.</h3><p>A new concept, a homework problem, or preparation for an assessment—tell me where you’d like some support.</p></li>
+      <li><span class="step-number">02</span><h3>Work through the reasoning.</h3><p>Break the problem into smaller steps and connect each step to the idea behind it.</p></li>
+      <li><span class="step-number">03</span><h3>Put it into practice.</h3><p>Try another example, talk through your thinking, and identify what to work on next.</p></li>
+    </ol>
+    <div class="topic-strip"><span class="eyebrow">Start a conversation about</span><ul><li>Math concepts</li><li>Science concepts</li><li>Problem solving</li><li>Study questions</li></ul></div>
+  </div></section>
+  <InquiryForm service="tutoring" heading="What are you working on?" description="Tell me the subject, the student’s level, and what you’d like help understanding. We can discuss whether it’s a good fit and how to get started." detailLabel="Subject or topic" detailPlaceholder="For example: algebra or chemistry" messagePlaceholder="Tell me what you’re studying, what feels unclear, and any scheduling preferences." />
+</SiteLayout>
