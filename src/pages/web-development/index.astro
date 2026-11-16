@@ -6,14 +6,15 @@ import Arrow from '../../components/Arrow.astro';
 
 const projects = [
   {
-    id: 'park-picker',
-    name: 'Park Picker',
-    tagline: 'Find your next outdoor adventure',
-    category: 'Web application',
+    id: 'tamfooderie',
+    name: 'Tamfooderie',
+    tagline: 'Meal prep ordering that fits the business',
+    category: 'Shopify storefront',
     color: 'pink',
-    description: 'A collaborative web application I helped build to find national parks by location and activities such as hiking, camping, and swimming. It brings park information, weather forecasts, and driving routes together, with user accounts for saving trips.',
-    technologies: ['JavaScript', 'React', 'Node.js', 'GraphQL', 'MongoDB'],
-    href: 'https://github.com/chewy441014/park-picker',
+    description: 'I help develop and maintain Tamfooderie’s Shopify store, from custom meal-plan and subscription ordering pages to mobile layout improvements. My work includes product and collection management, pickup and delivery configuration, holiday pre-orders, and customer troubleshooting—connecting the storefront to the daily needs of a meal-prep business.',
+    technologies: ['Shopify', 'Liquid', 'App configuration'],
+    href: 'https://tamfooderie.com/',
+    linkLabel: 'Visit Tamfooderie.com',
   },
   {
     id: 'quest-giver',
@@ -24,6 +25,7 @@ const projects = [
     description: 'An Android application that brings tasks, habits, and nutrition tracking together. Logging tools and history views help users review their activity over time, while a local database keeps their records on the device. The project combines interface design, persistent data, and the logic behind everyday interactions.',
     technologies: ['Kotlin', 'Jetpack Compose', 'Room'],
     href: 'https://github.com/chewy441014/quest-giver',
+    linkLabel: 'Explore Quest Giver on GitHub',
   },
   {
     id: 'rotodrawpy',
@@ -34,6 +36,7 @@ const projects = [
     description: 'A Python project focused on image processing and the development of a functional, 3D-printable RotoDraw. The current desktop application handles image import, preview, and normalization. The next stage adds image processing, building toward the geometry and printable components needed to turn a digital image into a working drawing tool.',
     technologies: ['Python', 'Tkinter', 'Pillow'],
     href: 'https://github.com/chewy441014/RotoDrawPy',
+    linkLabel: 'Explore RotoDrawPy on GitHub',
   },
 ] as const;
 ---
@@ -72,7 +75,7 @@ const projects = [
             <div class="project-topline">
               <p class="project-category">{project.category}</p>
               <svg class="project-symbol" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                {project.id === 'park-picker' && <path d="m8 14 14-5 18 6 16-6v41l-16 5-18-6-14 6V14ZM22 9v40M40 15v40M29 26l5-9 5 9h-10ZM32 26v8" />}
+                {project.id === 'tamfooderie' && <><rect x="8" y="10" width="48" height="44" rx="5" /><path d="M8 21h48M16 15h1M22 15h1M21 32h22l3 16H18l3-16ZM27 32v-3a5 5 0 0 1 10 0v3" /></>}
                 {project.id === 'quest-giver' && <><rect x="14" y="4" width="36" height="56" rx="5" /><path d="M26 11h12M27 53h10M23 30l6 6 13-15M23 43h18" /></>}
                 {project.id === 'rotodrawpy' && <><rect x="8" y="10" width="48" height="44" rx="5" /><circle cx="24" cy="25" r="5" /><path d="m8 45 15-12 9 9 10-16 14 20" /></>}
               </svg>
@@ -83,7 +86,7 @@ const projects = [
             <ul class="project-technologies" aria-label={`${project.name} technologies`}>
               {project.technologies.map((technology) => <li>{technology}</li>)}
             </ul>
-            <a class="project-link" href={project.href}>Explore {project.name} on GitHub<Arrow /></a>
+            <a class="project-link" href={project.href}>{project.linkLabel}<Arrow /></a>
           </article>
         ))}
       </div>
@@ -112,7 +115,7 @@ const projects = [
   .project-technologies li { padding: .3rem .6rem; border: 1px solid currentColor; border-radius: 30px; font-size: .7rem; line-height: 1.4; }
   .project-link { display: flex; align-items: center; justify-content: space-between; gap: .8rem; min-height: 48px; padding-top: 1rem; border-top: 1px solid currentColor; font-size: .78rem; font-weight: 600; line-height: 1.5; text-decoration: none; }
   .project-link:hover { text-decoration: underline; }
-  .project-link svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .project-link :global(svg) { width: 22px; height: 22px; flex-shrink: 0; }
   .card-green .project-link:focus-visible { outline-color: var(--color-orange); }
   @media (max-width: 1000px) {
     .builder-introduction { gap: 2.5rem; }
