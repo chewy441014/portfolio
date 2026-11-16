@@ -1,0 +1,16 @@
+---
+import { services } from '../data/services';
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [{ title: 'Home', href: '/' }, ...services];
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href="/" aria-label="Preston Hill — home"><span class="monogram" aria-hidden="true">ph<span>.</span></span><span>Preston Hill</span></a>
+    <nav aria-label="Main navigation">
+      {links.map(({ title, href }) => {
+        const isCurrent = (href.replace(/\/$/, '') || '/') === currentPath;
+        return <a href={href} aria-current={isCurrent ? 'page' : undefined}>{title}</a>;
+      })}
+    </nav>
+  </div>
+</header>
