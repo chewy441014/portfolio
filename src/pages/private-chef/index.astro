@@ -1,0 +1,19 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import ServiceHero from '../../components/ServiceHero.astro';
+import InquiryForm from '../../components/InquiryForm.astro';
+import Star from '../../components/Star.astro';
+---
+<SiteLayout title="Private Chef | Preston Hill" description="Talk with Preston Hill about a meal made around your occasion, preferences, and the people at your table. Start a private chef inquiry.">
+  <ServiceHero service="private-chef" heading="Good food." accent="Your kind of occasion." description="A quiet dinner, a table full of friends, or a little help with meals. Tell me what you’re imagining, and we’ll talk about what’s possible." action="Start a chef inquiry" note="Made for your table." />
+  <section class="section-space" aria-labelledby="chef-approach"><div class="container">
+    <div class="section-intro"><div><p class="eyebrow">Start with the people</p><h2 id="chef-approach">A thoughtful meal<br />starts with a conversation.</h2></div><p>The occasion, the food you enjoy, and the people sharing it all help shape the plan.</p></div>
+    <ol class="process-grid">
+      <li><span class="step-number">01</span><h3>Share the occasion.</h3><p>Tell me about the meal you have in mind, the number of people, your location, and any dates you’re considering.</p></li>
+      <li><span class="step-number">02</span><h3>Talk through the food.</h3><p>Discuss the flavors you enjoy, your preferences, and any dietary requests that need consideration.</p></li>
+      <li><span class="step-number">03</span><h3>Make a plan together.</h3><p>Explore the menu, arrangements, availability, and pricing before agreeing on the details.</p></li>
+    </ol>
+    <div class="chef-note"><span aria-hidden="true"><Star /></span><p>For the everyday.<br /><em>And the worth-celebrating.</em></p></div>
+  </div></section>
+  <InquiryForm service="private-chef" heading="What’s on your mind—and your menu?" description="Share a little about the occasion and your location. We can discuss the food, arrangements, and whether it’s a good fit." detailLabel="Meal or occasion" detailPlaceholder="A dinner, a gathering, or meal preparation" messagePlaceholder="Tell me about the date, location, number of people, food preferences, and any dietary requests you’d like to discuss." />
+</SiteLayout>
