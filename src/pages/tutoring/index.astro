@@ -5,14 +5,81 @@ import InquiryForm from '../../components/InquiryForm.astro';
 ---
 <SiteLayout title="Math & Science Tutoring | Preston Hill" description="Math and science tutoring with Preston Hill. Bring your questions, explore the reasoning, and work through concepts one step at a time.">
   <ServiceHero service="tutoring" heading="A little clarity" accent="goes a long way." description="Math and science can feel like a lot of moving pieces. Let’s slow things down, ask questions, and work through the ideas together." action="Ask about tutoring" note="One concept at a time." />
+
+  <section class="section-space tutor-background" aria-labelledby="tutor-background-heading">
+    <div class="container">
+      <div class="tutor-introduction">
+        <div class="tutor-story">
+          <p class="eyebrow">Meet your tutor</p>
+          <h2 id="tutor-background-heading">Why learn with me?</h2>
+          <p>I’m Preston Hill, and I have a genuine love of math, science, and learning. Teaching deepens my own understanding, and I enjoy helping students discover what makes STEM subjects interesting—whether they’re exploring a future in engineering or medicine, or working through today’s homework.</p>
+          <p>The moment when an idea clicks is what makes teaching rewarding for me. Watching my nephew learn has reinforced how much I enjoy encouraging curiosity, helping students challenge themselves, and seeing that spark of understanding.</p>
+        </div>
+        <aside class="tutor-values" aria-label="What you can expect">
+          <p class="eyebrow">What you can expect</p>
+          <h3>Reliable and punctual.</h3>
+          <p>I take appointments seriously. You can expect me to respect your time and bring a consistent commitment to our sessions.</p>
+          <h3>Room to ask questions.</h3>
+          <p>I work best in smaller settings, where there’s time to listen, find out what feels unclear, and give each student’s thinking the attention it deserves.</p>
+        </aside>
+      </div>
+
+      <div class="tutor-experience" aria-labelledby="teaching-experience-heading">
+        <h3 id="teaching-experience-heading">Teaching in different settings.</h3>
+        <dl class="experience-list">
+          <div>
+            <dt>Elementary school homework support</dt>
+            <dd>As a high school senior, I helped elementary school students with homework across subjects. I also used timed reading exercises to help them notice and track their progress over time.</dd>
+          </div>
+          <div>
+            <dt>Hands-on teaching at Rice University</dt>
+            <dd>During my junior and senior years at Rice University, I taught welding for the Mechanical Engineering department—an opportunity to help students learn a practical skill.</dd>
+          </div>
+          <div>
+            <dt>Technical communication at Anton Paar</dt>
+            <dd>Explaining complex technical problems and solutions to customers at Anton Paar gave me practice gauging understanding, asking purposeful questions, and making technical ideas approachable.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
   <section class="section-space" aria-labelledby="tutoring-approach"><div class="container">
-    <div class="section-intro"><div><p class="eyebrow">The approach</p><h2 id="tutoring-approach">Understand the why.<br />Then work through the how.</h2></div><p>Bring the subject you’re studying and the part that feels unclear. We’ll use that as our starting point.</p></div>
+    <div class="section-intro"><div><p class="eyebrow">The approach</p><h2 id="tutoring-approach">Understand the why.<br />Then work through the how.</h2></div><p>My approach is Socratic: I use purposeful questions to understand what you already know and help you discover the next step for yourself.</p></div>
     <ol class="process-grid">
-      <li><span class="step-number">01</span><h3>Start with your question.</h3><p>A new concept, a homework problem, or preparation for an assessment—tell me where you’d like some support.</p></li>
-      <li><span class="step-number">02</span><h3>Work through the reasoning.</h3><p>Break the problem into smaller steps and connect each step to the idea behind it.</p></li>
-      <li><span class="step-number">03</span><h3>Put it into practice.</h3><p>Try another example, talk through your thinking, and identify what to work on next.</p></li>
+      <li><span class="step-number">01</span><h3>Find your starting point.</h3><p>Talk through the problem and what you’ve tried. Your questions and reasoning help me understand where support will be most useful.</p></li>
+      <li><span class="step-number">02</span><h3>Follow a useful question.</h3><p>Explore the connections between ideas, explain your reasoning, and work toward your own understanding with guided questions.</p></li>
+      <li><span class="step-number">03</span><h3>Make progress visible.</h3><p>Try another example and explain the idea in your own words. We’ll use that progress to decide what to work on next.</p></li>
     </ol>
     <div class="topic-strip"><span class="eyebrow">Start a conversation about</span><ul><li>Math concepts</li><li>Science concepts</li><li>Problem solving</li><li>Study questions</li></ul></div>
   </div></section>
   <InquiryForm service="tutoring" heading="What are you working on?" description="Tell me the subject, the student’s level, and what you’d like help understanding. We can discuss whether it’s a good fit and how to get started." detailLabel="Subject or topic" detailPlaceholder="For example: algebra or chemistry" messagePlaceholder="Tell me what you’re studying, what feels unclear, and any scheduling preferences." />
 </SiteLayout>
+
+<style>
+  .tutor-background { border-bottom: 1px solid var(--color-rule); }
+  .tutor-introduction { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; gap: 5rem; }
+  .tutor-story p { max-width: 40rem; }
+  .tutor-story p:last-child { margin-bottom: 0; }
+  .tutor-values { padding: 32px; border: 1px solid var(--color-rule); border-radius: 9px; color: var(--color-ink); background: var(--color-pink); }
+  .tutor-values h3 { font-size: 1.25rem; }
+  .tutor-values h3:not(:first-of-type) { margin-top: 1.7rem; }
+  .tutor-values p:not(.eyebrow) { font-size: .92rem; line-height: 1.75; }
+  .tutor-values p:last-child { margin-bottom: 0; }
+  .tutor-experience { margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--color-rule); }
+  .tutor-experience > h3 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.3rem); letter-spacing: -.04em; }
+  .experience-list { margin: 1.8rem 0 0; }
+  .experience-list > div { display: grid; grid-template-columns: minmax(180px, .65fr) minmax(0, 1.7fr); gap: 2rem; padding-block: 1.3rem; border-top: 1px solid var(--color-rule); }
+  .experience-list > div:last-child { padding-bottom: 0; }
+  .experience-list dt { font-size: .95rem; font-weight: 600; }
+  .experience-list dd { max-width: 50rem; margin: 0; font-size: .95rem; }
+  @media (max-width: 1000px) {
+    .tutor-introduction { gap: 2.5rem; }
+  }
+  @media (max-width: 760px) {
+    .tutor-introduction { grid-template-columns: 1fr; gap: 1.8rem; }
+    .tutor-values { padding: 26px; }
+    .tutor-experience { margin-top: 2.5rem; padding-top: 2rem; }
+    .experience-list > div { grid-template-columns: 1fr; gap: .5rem; }
+  }
+</style>
