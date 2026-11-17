@@ -2,18 +2,97 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import ServiceHero from '../../components/ServiceHero.astro';
 import InquiryForm from '../../components/InquiryForm.astro';
-import Star from '../../components/Star.astro';
 ---
-<SiteLayout title="Private Chef | Preston Hill" description="Talk with Preston Hill about a meal made around your occasion, preferences, and the people at your table. Start a private chef inquiry.">
-  <ServiceHero service="private-chef" heading="Good food." accent="Your kind of occasion." description="A quiet dinner, a table full of friends, or a little help with meals. Tell me what you’re imagining, and we’ll talk about what’s possible." action="Start a chef inquiry" note="Made for your table." />
-  <section class="section-space" aria-labelledby="chef-approach"><div class="container">
-    <div class="section-intro"><div><p class="eyebrow">Start with the people</p><h2 id="chef-approach">A thoughtful meal<br />starts with a conversation.</h2></div><p>The occasion, the food you enjoy, and the people sharing it all help shape the plan.</p></div>
-    <ol class="process-grid">
-      <li><span class="step-number">01</span><h3>Share the occasion.</h3><p>Tell me about the meal you have in mind, the number of people, your location, and any dates you’re considering.</p></li>
-      <li><span class="step-number">02</span><h3>Talk through the food.</h3><p>Discuss the flavors you enjoy, your preferences, and any dietary requests that need consideration.</p></li>
-      <li><span class="step-number">03</span><h3>Make a plan together.</h3><p>Explore the menu, arrangements, availability, and pricing before agreeing on the details.</p></li>
-    </ol>
-    <div class="chef-note"><span aria-hidden="true"><Star /></span><p>For the everyday.<br /><em>And the worth-celebrating.</em></p></div>
-  </div></section>
-  <InquiryForm service="private-chef" heading="What’s on your mind—and your menu?" description="Share a little about the occasion and your location. We can discuss the food, arrangements, and whether it’s a good fit." detailLabel="Meal or occasion" detailPlaceholder="A dinner, a gathering, or meal preparation" messagePlaceholder="Tell me about the date, location, number of people, food preferences, and any dietary requests you’d like to discuss." />
+<SiteLayout title="Private Chef | Preston Hill" description="In-home private dinners and weekly meal prep with Preston Hill in Tyler, Athens, and the communities between. Seasonal ingredients and an adventurous palate.">
+  <ServiceHero service="private-chef" heading="Good food." accent="Made in your kitchen." description="Private dinners and weekly meal prep, cooked in your home. I bring an adventurous palate, a love of vegetables, and a practical approach to making meals you’ll want to come home to." action="Plan a meal with me" note="A little curiosity. Plenty of flavor." />
+
+  <section class="chef-details" aria-label="Service area and availability">
+    <dl class="container chef-facts">
+      <div><dt>Serving</dt><dd>Tyler, Athens, and the communities between.</dd></div>
+      <div><dt>Current availability</dt><dd>Tuesday, Wednesday, Thursday, and Sunday.</dd></div>
+    </dl>
+  </section>
+
+  <section class="section-space chef-background" aria-labelledby="chef-background-heading">
+    <div class="container chef-introduction">
+      <div class="chef-story">
+        <p class="eyebrow">Meet your cook</p>
+        <h2 id="chef-background-heading">Curiosity brought me<br />to the kitchen.</h2>
+        <p>I’ve been cooking since I was a kid, first out of curiosity and a desire for more variety. In college, I began paying closer attention to how food fit into my health and daily life. Cooking for myself through graduate school in Los Angeles taught me to make meals I enjoyed on a student budget. Cooking for date night has always been part of the fun, too.</p>
+        <p>That habit stayed with me. I like meals with a satisfying protein, plenty of vegetables, and enough variety to keep things interesting. At <a href="https://tamfooderie.com/">Tamfooderie</a>, I’m sharpening the precision and consistency it takes to make delicious food in a busy kitchen.</p>
+      </div>
+      <aside class="chef-example" aria-labelledby="chef-example-heading">
+        <p class="eyebrow">From my own kitchen</p>
+        <h3 id="chef-example-heading">One preparation.<br />Several good meals.</h3>
+        <p>I often brine and braise chicken thighs with just salt. The chicken can become tacos, quesadillas, or a stir-fry, while the broth and rendered fat go into later cooking.</p>
+        <p>That’s how I think about meal prep: a little planning, useful leftovers, and room to change the flavors throughout the week.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-space chef-services" aria-labelledby="chef-services-heading">
+    <div class="container">
+      <p class="eyebrow">What I offer</p>
+      <h2 id="chef-services-heading">Dinner tonight.<br />A plan for the week.</h2>
+      <div class="chef-offerings">
+        <article aria-labelledby="private-dinners-heading">
+          <h3 id="private-dinners-heading">Private dinners</h3>
+          <p>A meal cooked in your home, whether it’s date night or regular help getting dinner on the table. We’ll plan the food around what you enjoy and the evening you have in mind.</p>
+          <p>I’m most comfortable cooking for one or two adults, including families with children. Dinners for up to four adults can be discussed.</p>
+        </article>
+        <article aria-labelledby="weekly-meal-prep-heading">
+          <h3 id="weekly-meal-prep-heading">Weekly meal prep</h3>
+          <p>Food prepared in your kitchen so you can eat more meals at home without sacrificing flavor. I plan around foods you enjoy, with preparations that can take on different flavors across the week.</p>
+          <p>Chicken, beef, tofu, beans, and lentils are all familiar ground for me, alongside plenty of vegetables. We can discuss the balance and recipe adjustments that suit your preferences.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-space" aria-labelledby="chef-approach-heading">
+    <div class="container">
+      <div class="section-intro">
+        <div><p class="eyebrow">How I cook</p><h2 id="chef-approach-heading">Let the ingredients lead.</h2></div>
+        <p>I’m especially drawn to Asian cuisines for their variety of ingredients and techniques. Miso, chili crisp, soy, and mushrooms are flavors I return to often, alongside Mexican-inspired seasonings.</p>
+      </div>
+      <ul class="process-grid chef-principles">
+        <li><h3>Seasonal, with room to explore.</h3><p>Soups when it’s cold, pasta salads when it’s warm, and vegetables that fit the season. I use seasoning to bring out the flavor of the meat or vegetables at the center of a dish.</p></li>
+        <li><h3>Food that fits how you eat.</h3><p>My own cooking reflects a preference for protein and plenty of vegetables. I often adapt recipes, including reducing added sugar, and we can agree on changes when we plan your menu.</p></li>
+        <li><h3>A quiet presence in your kitchen.</h3><p>I focus on the cooking. I’m happy to explain a technique or the science behind a dish when you’re curious, and comfortable getting on with dinner while you enjoy your evening.</p></li>
+      </ul>
+      <p class="chef-menu-note">We’ll discuss the menu, your kitchen, timing, and pricing before booking. Sushi is outside my current offering.</p>
+    </div>
+  </section>
+
+  <InquiryForm service="private-chef" heading="What would you like to eat?" description="Tell me whether you’re looking for private dinners or weekly meal prep, where you’re located, and who I’d be cooking for. We can work out a menu and the practical details together." detailLabel="Dinner or weekly meal prep" detailPlaceholder="For example: weekly meal prep for two" messagePlaceholder="Share your location, preferred dates, number of adults and children, food preferences, and any allergies or dietary requests you’d like to discuss." />
 </SiteLayout>
+
+<style>
+  .chef-details, .chef-background, .chef-services { border-bottom: 1px solid var(--color-rule); }
+  .chef-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding-block: 30px; }
+  .chef-facts dt { margin-bottom: .4rem; font-size: .7rem; font-weight: 650; letter-spacing: .1em; text-transform: uppercase; }
+  .chef-facts dd { margin: 0; font-size: .95rem; }
+  .chef-introduction { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; gap: 5rem; }
+  .chef-story p { max-width: 40rem; }
+  .chef-story p:last-child { margin-bottom: 0; }
+  .chef-example { min-width: 0; padding: 32px; border: 1px solid var(--color-rule); border-radius: 9px; background: var(--color-orange); }
+  .chef-example h3 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -.04em; }
+  .chef-example p:not(.eyebrow) { font-size: .95rem; }
+  .chef-example p:last-child { margin-bottom: 0; }
+  .chef-offerings { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4rem; margin-top: 2.5rem; }
+  .chef-offerings article { padding-top: 24px; border-top: 1px solid var(--color-rule); }
+  .chef-offerings h3 { font-family: var(--font-display); font-size: 2rem; letter-spacing: -.04em; }
+  .chef-offerings p { max-width: 35rem; }
+  .chef-offerings p:last-child, .chef-principles p { margin-bottom: 0; }
+  .chef-menu-note { margin: 2.5rem 0 0; padding-left: 1rem; border-left: 2px solid var(--color-ink); font-size: .9rem; }
+  @media (max-width: 1000px) {
+    .chef-introduction { gap: 2.5rem; }
+    .chef-offerings { gap: 2.5rem; }
+  }
+  @media (max-width: 760px) {
+    .chef-facts { grid-template-columns: 1fr; gap: 1.25rem; }
+    .chef-introduction { grid-template-columns: 1fr; gap: 1.8rem; }
+    .chef-example { padding: 26px; }
+    .chef-offerings { grid-template-columns: 1fr; gap: 1.8rem; }
+  }
+</style>
